@@ -2,12 +2,10 @@ package com.omni.onboardingscreen.feature
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import androidx.annotation.RequiresApi
 import androidx.viewpager2.widget.ViewPager2
 import com.omni.onboardingscreen.R
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
@@ -17,7 +15,6 @@ import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import kotlinx.android.synthetic.main.onboarding_view.view.*
 import setParallaxTransformation
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class OnBoardingView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0) :
     FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
