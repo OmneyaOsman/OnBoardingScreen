@@ -1,6 +1,7 @@
 package com.omni.onboardingscreen.feature
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.viewpager2.widget.ViewPager2
 import com.omni.onboardingscreen.R
+import com.omni.onboardingscreen.domain.OnBoardingPrefManager
 import com.omni.onboardingscreen.feature.onboarding.OnBoardingPagerAdapter
 import com.omni.onboardingscreen.feature.onboarding.entity.OnBoardingPage
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
@@ -21,11 +23,13 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     private val numberOfPages by lazy { OnBoardingPage.values().size }
+    private val prefManager: OnBoardingPrefManager
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.onboarding_view, this, true)
         setUpSlider(view)
-        addingButtonsClickListners()
+        addingButtonsClickListeners()
+        prefManager = OnBoardingPrefManager(view.context)
     }
 
     private fun setUpSlider(view: View) {
@@ -56,10 +60,27 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         })
     }
 
-    private fun addingButtonsClickListners() {
-        nextBtn.setOnClickListener { }
-        skipBtn.setOnClickListener { }
-        startBtn.setOnClickListener { }
+    private fun addingButtonsClickListeners() {
+        nextBtn.setOnClickListener { navigateToNextSlide() }
+        skipBtn.setOnClickListener {
+            setFirstTimeLaunchToFalse()
+        }
+        startBtn.setOnClickListener {
+            setFirstTimeLaunchToFalse()
+        }
     }
 
+    private fun setFirstTimeLaunchToFalse() {
+        prefManager.isFirstTimeLaunch = false
+    }
+
+    private fun navigateToNextSlide() {
+        val nextSlidePos: Int = slider?.currentItem?.plus(1) ?: 0
+        slider?.setCurrentItem(nextSlidePos, true)
+    }
+
+    //TODO adding navigation to MainActivity
+    private fun navigateToMainACtivity() {
+        Intent()
+    }
 }
