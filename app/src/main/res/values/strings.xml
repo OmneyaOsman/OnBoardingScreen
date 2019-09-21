@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Onboarding Freebi</string>
+    <string name="app_name">Welcome</string>
 
     <string name="onboarding_slide1_title">Create an account</string>
     <string name="onboarding_slide1_subtitle">Connect with people around the world</string>
