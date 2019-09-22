@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/intro_navigation.xml"
+            app:startDestination="@id/onBoardingFragment">
+
+    <fragment android:id="@+id/onBoardingFragment"
+              android:name="com.omni.onboardingscreen.feature.onboarding.OnBoardingFragment"
+              android:label="fragment_on_boarding" tools:layout="@layout/fragment_on_boarding">
+        <action android:id="@+id/action_onBoardingFragment_to_homeFragment" app:destination="@id/homeFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popUpTo="@id/onBoardingFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/homeFragment"
+              android:name="com.omni.onboardingscreen.feature.home.HomeFragment" android:label="Home"
+              tools:layout="@layout/fragment_home"/>
+    <fragment android:id="@+id/splashFragment" android:name="com.omni.onboardingscreen.feature.splash.SplashFragment"
+              android:label="SplashFragment"
+              tools:layout="@layout/fragment_splash">
+        <action android:id="@+id/action_splashFragment_to_onBoardingFragment"
+                app:destination="@id/onBoardingFragment"
+                app:popUpToInclusive="true" app:popUpTo="@+id/splashFragment"/>
+    </fragment>
+</navigation>

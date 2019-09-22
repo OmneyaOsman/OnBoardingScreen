@@ -1,6 +1,10 @@
 import android.view.View
 import kotlinx.android.synthetic.main.onboarding_page_item.view.*
 
+/*** parallax transformation to the image
+ * to parallax the whole page make parallaxView = page
+ */
+
 fun setParallaxTransformation(page: View, position: Float){
     page.apply {
         val parallaxView = this.img

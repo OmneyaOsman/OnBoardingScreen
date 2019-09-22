@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.omni.onboardingscreen.R
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
@@ -60,9 +61,11 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         nextBtn.setOnClickListener { navigateToNextSlide() }
         skipBtn.setOnClickListener {
             setFirstTimeLaunchToFalse()
+            navigateToHomeScreen()
         }
         startBtn.setOnClickListener {
             setFirstTimeLaunchToFalse()
+            navigateToHomeScreen()
         }
     }
 
@@ -75,6 +78,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         slider?.setCurrentItem(nextSlidePos, true)
     }
 
-    private fun navigateToMainACtivity() {
+    private fun navigateToHomeScreen() {
+        findNavController().navigate(R.id.action_onBoardingFragment_to_homeFragment , null)
     }
 }
