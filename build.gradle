@@ -3,6 +3,8 @@
 buildscript {
     ext.kotlin_version = '1.3.41'
     ext.version_navigation = '1.0.0'
+    ext.version_kotlin_coroutines = "1.1.0"
+    ext.lottieVersion = "3.0.7"
 
     repositories {
         google()
