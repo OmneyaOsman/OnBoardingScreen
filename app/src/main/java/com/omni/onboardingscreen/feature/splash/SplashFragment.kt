@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.omni.onboardingscreen.R
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
+import com.omni.onboardingscreen.feature.changeStatusBarColor
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -29,6 +30,8 @@ class SplashFragment : Fragment(), CoroutineScope {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        changeStatusBarColor(R.color.colorPurple)
+
         launch {
             delay(3000)
             navigateToNext()
@@ -42,6 +45,8 @@ class SplashFragment : Fragment(), CoroutineScope {
         else
             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

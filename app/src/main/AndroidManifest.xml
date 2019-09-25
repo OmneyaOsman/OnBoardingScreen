@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".feature.onboarding.OnBoardingActivity"
+        <activity android:name=".feature.MainActivity"
         android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

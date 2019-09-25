@@ -1,10 +1,10 @@
-package com.omni.onboardingscreen.feature.onboarding
+package com.omni.onboardingscreen.feature
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.omni.onboardingscreen.R
 
-class OnBoardingActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
