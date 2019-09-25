@@ -30,7 +30,7 @@ class SplashFragment : Fragment(), CoroutineScope {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launch {
-            delay(1000)
+            delay(3000)
             navigateToNext()
         }
     }
