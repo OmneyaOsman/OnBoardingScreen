@@ -1,4 +1,4 @@
-package com.omni.onboardingscreen.feature
+package com.omni.onboardingscreen.feature.onboarding.customView
 
 import android.content.Context
 import android.util.AttributeSet

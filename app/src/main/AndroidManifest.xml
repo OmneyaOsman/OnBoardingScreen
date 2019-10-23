@@ -11,14 +11,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".feature.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".feature.onboarding.OnBoardingActivity">
+        <activity android:name=".feature.onboarding.OnBoardingActivity"
+                android:theme="@style/AppTheme.OnBoarding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
