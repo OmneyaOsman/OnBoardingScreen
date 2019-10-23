@@ -46,8 +46,6 @@ class SplashFragment : Fragment(), CoroutineScope {
             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
     }
 
-
-
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
