@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:duration="@integer/animation_duration">
+
+    <!-- Start scaling & fading RV to give the impression of zoom in -->
+    <transitionSet>
+        <targets>
+            <target android:targetId="@id/container"
+                />
+        </targets>
+        <transition
+                class="com.omni.onboardingscreen.core.PopTransition"
+                app:startScale="0.95"
+                app:endScale="1.0"/>
+        <transition
+                class="com.omni.onboardingscreen.core.FadeTransition"
+                app:startAlpha="0.3"
+                app:endAlpha="1.0"/>
+    </transitionSet>
+
+</transitionSet>
