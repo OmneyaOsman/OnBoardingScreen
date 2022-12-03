@@ -1,5 +1,4 @@
 import android.view.View
-import kotlinx.android.synthetic.main.onboarding_page_item.view.*
 
 fun setParallaxTransformation(page: View, position: Float){
     page.apply {
@@ -18,3 +17,18 @@ fun setParallaxTransformation(page: View, position: Float){
     }
 
 }
+
+//page.apply {
+//    if (position <= 1 && position >= -1) {
+//        planet.translationX = -position * width
+//        name.translationX = -position * width
+//        name.translationY = position * height / 5
+//        /*
+//            Planets and their names move in the opposite direction. So they are stable
+//            If the user drags the page right to left :
+//            Name: Goes up
+//            If the user drags the page left to right :
+//            Name: Goes down
+//         */
+//    }
+//}

@@ -7,11 +7,11 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.omni.onboardingscreen.R
+import com.omni.onboardingscreen.databinding.OnboardingViewBinding
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
 import com.omni.onboardingscreen.feature.onboarding.OnBoardingPagerAdapter
 import com.omni.onboardingscreen.feature.onboarding.entity.OnBoardingPage
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-import kotlinx.android.synthetic.main.onboarding_view.view.*
 import setParallaxTransformation
 
 class OnBoardingView @JvmOverloads
@@ -21,14 +21,18 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private val numberOfPages by lazy { OnBoardingPage.values().size }
     private val prefManager: OnBoardingPrefManager
 
+
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.onboarding_view, this, true)
-        setUpSlider(view)
-        addingButtonsClickListeners()
-        prefManager = OnBoardingPrefManager(view.context)
+        val  binding = OnboardingViewBinding.inflate(LayoutInflater.from(context), this, true)
+        with(binding){
+            setUpSlider()
+            addingButtonsClickListeners()
+            prefManager = OnBoardingPrefManager(root.context)
+        }
+
     }
 
-    private fun setUpSlider(view: View) {
+    private fun OnboardingViewBinding.setUpSlider() {
         with(slider) {
             adapter = OnBoardingPagerAdapter()
             setPageTransformer { page, position ->
@@ -37,13 +41,13 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
             addSlideChangeListener()
 
-            val wormDotsIndicator = view.findViewById<WormDotsIndicator>(R.id.page_indicator)
-            wormDotsIndicator.setViewPager2(this)
+            val wormDotsIndicator = pageIndicator
+            wormDotsIndicator.attachTo(this)
         }
     }
 
 
-    private fun addSlideChangeListener() {
+    private fun OnboardingViewBinding.addSlideChangeListener() {
 
         slider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -56,8 +60,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         })
     }
 
-    private fun addingButtonsClickListeners() {
-        nextBtn.setOnClickListener { navigateToNextSlide() }
+    private fun OnboardingViewBinding.addingButtonsClickListeners() {
+        nextBtn.setOnClickListener { navigateToNextSlide(slider) }
         skipBtn.setOnClickListener {
             setFirstTimeLaunchToFalse()
         }
@@ -70,11 +74,10 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         prefManager.isFirstTimeLaunch = false
     }
 
-    private fun navigateToNextSlide() {
+    private fun navigateToNextSlide(slider:ViewPager2?) {
         val nextSlidePos: Int = slider?.currentItem?.plus(1) ?: 0
         slider?.setCurrentItem(nextSlidePos, true)
     }
 
-    private fun navigateToMainACtivity() {
-    }
+
 }
