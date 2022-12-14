@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
           package="com.omni.onboardingscreen">
 
     <application
@@ -19,8 +18,8 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".feature.MainActivity"
-        android:screenOrientation="portrait">
+        <activity  android:exported="true" android:name=".feature.onboarding.OnBoardingActivity"
+                android:theme="@style/AppTheme.OnBoarding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
