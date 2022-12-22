@@ -27,5 +27,5 @@ This module requires the following libraries:
 * Master branch shows only Onboarding design an prefManager
 * development branch handles navigations from splash to onboarding for first time launch then after pressing skip or
   Get started in the next time App launches the splash navigates to home .
-* Update your android studio to verion 3.4.2 .
+* Update your android studio to verion 7.3.1 .
 
