@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
           package="com.omni.onboardingscreen">
 
     <application
@@ -10,16 +11,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"
+        <activity android:exported="true" android:name=".feature.MainActivity"
         >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity  android:exported="true" android:name=".feature.onboarding.OnBoardingActivity"
-                android:theme="@style/AppTheme.OnBoarding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.omni.onboardingscreen.R
 import com.omni.onboardingscreen.core.pageCompositePageTransformer
 import com.omni.onboardingscreen.core.setParallaxTransformation
 import com.omni.onboardingscreen.databinding.OnboardingViewBinding

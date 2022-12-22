@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.omni.onboardingscreen.R
+import com.omni.onboardingscreen.databinding.FragmentSplashBinding
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
 import com.omni.onboardingscreen.feature.changeStatusBarColor
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class SplashFragment : Fragment(), CoroutineScope {
+
+
+    private var _binding: FragmentSplashBinding? = null
+    private val binding get() = _binding!!
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
@@ -24,9 +29,14 @@ class SplashFragment : Fragment(), CoroutineScope {
         job = Job()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_splash, container, false)
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +54,13 @@ class SplashFragment : Fragment(), CoroutineScope {
             findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
         else
             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+    }
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onDestroy() {
