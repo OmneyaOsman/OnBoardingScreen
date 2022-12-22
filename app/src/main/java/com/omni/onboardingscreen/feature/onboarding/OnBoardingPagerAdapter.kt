@@ -27,9 +27,13 @@ class OnBoardingPagerAdapter(private val onBoardingPageList: Array<OnBoardingPag
         holder.bind(onBoardingPageList[position])
     }
 
-
+/** PagerViewHolder viewHolder inner class
+ * @param binding is OnboardingPageItemBinding to bind data */
   inner  class PagerViewHolder(private val binding: OnboardingPageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+    /**
+     * @param onBoardingPage is OnBoardingPage item
+     * bind view **/
         fun bind(onBoardingPage: OnBoardingPage) {
             val res = binding.root.context.resources
             binding.titleTv.text = res.getString(onBoardingPage.titleResource)
