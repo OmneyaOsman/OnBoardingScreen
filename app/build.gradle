@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "com.omni.onboardingscreen"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 3
         versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -38,19 +38,21 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.0'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'androidx.datastore:datastore-preferences-core:1.0.0'
 
     //viewPager2 library
     implementation 'androidx.viewpager2:viewpager2:1.1.0-beta02'
 
     //stepper library
-    implementation "com.tbuonomo:dotsindicator:4.3"
+    implementation 'com.tbuonomo:dotsindicator:5.0'
 
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
-    implementation "com.airbnb.android:lottie:6.0.1"
+    implementation 'com.airbnb.android:lottie:6.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
