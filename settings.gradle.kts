@@ -1,8 +1,9 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
+        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 dependencyResolutionManagement {
@@ -13,4 +14,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "onBoarding"
-include ':app'
+include (":app")
+
