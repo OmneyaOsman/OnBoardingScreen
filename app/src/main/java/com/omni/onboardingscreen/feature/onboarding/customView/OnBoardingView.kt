@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
-import com.omni.onboardingscreen.core.pageCompositePageTransformer
 import com.omni.onboardingscreen.core.setParallaxTransformation
 import com.omni.onboardingscreen.databinding.OnboardingViewBinding
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
 import com.omni.onboardingscreen.feature.onboarding.OnBoardingPagerAdapter
 import com.omni.onboardingscreen.feature.onboarding.entity.OnBoardingPage
 
+@Deprecated("refactor  business in viewModel and draw OnBoardingView with composition")
 class OnBoardingView @JvmOverloads
 constructor(
     context: Context,

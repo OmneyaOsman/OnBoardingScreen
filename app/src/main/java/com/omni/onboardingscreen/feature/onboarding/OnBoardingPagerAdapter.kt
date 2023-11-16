@@ -6,6 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.omni.onboardingscreen.databinding.OnboardingPageItemBinding
 import com.omni.onboardingscreen.feature.onboarding.entity.OnBoardingPage
 
+
+
+@Deprecated("no need in compose ")
+
 /**
  *OnBoardingPagerAdapter adapter for the viewpager2
  *  @param onBoardingPageList as Array */

@@ -3,6 +3,8 @@ package com.omni.onboardingscreen.domain
 import android.content.Context
 import android.content.SharedPreferences
 
+
+@Deprecated("todo remove prefManager" ,replaceWith = ReplaceWith("DataStore"))
 class OnBoardingPrefManager (_context: Context) {
 
 
