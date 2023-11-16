@@ -9,15 +9,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
            >
-        <activity  android:exported="false" android:name=".feature.home.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity  android:exported="true" android:name=".feature.onboarding.OnBoardingActivity"
-                android:theme="@style/AppTheme.OnBoarding">
+        <activity  android:exported="true" android:name=".ComposeMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
