@@ -1,4 +1,4 @@
-package com.omni.onboardingscreen.feature.onboarding.entity
+package com.omni.onboardingscreen.feature.onboarding.model
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.omni.onboardingscreen.R
