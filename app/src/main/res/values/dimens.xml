@@ -2,5 +2,8 @@
 <resources>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_32">32dp</dimen>
     <dimen name="margin_8">8dp</dimen>
+    <dimen name="size_small"> 8dp</dimen>
+    <dimen name="border_size_small"> 1dp</dimen>
 </resources>

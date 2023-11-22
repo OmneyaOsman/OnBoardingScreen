@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -18,29 +20,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.omni.onboardingscreen.R
 import com.omni.onboardingscreen.feature.onboarding.entity.OnBoardingPage
 import com.omni.onboardingscreen.theme.ColorBlueMidnight
+import com.omni.onboardingscreen.theme.ColorPurple
+import com.tbuonomo.viewpagerdotsindicator.compose.DotsIndicator
+import com.tbuonomo.viewpagerdotsindicator.compose.model.DotGraphic
+import com.tbuonomo.viewpagerdotsindicator.compose.type.WormIndicatorType
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingScreen(modifier: Modifier = Modifier, loadAffirmations: List<OnBoardingPage>) {
 
+    val pageCount = 3
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
-    Column {
+    Column(modifier = modifier.fillMaxSize()) {
 
 
         HorizontalPager(
-            pageCount = 3,
+            pageCount = pageCount,
             modifier = modifier.weight(3f),
             state = pagerState,
         ) { page ->
@@ -48,16 +56,33 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, loadAffirmations: List<OnBoa
             PageItem(item = loadAffirmations[page])
         }
 
+        DotsIndicator(
+            dotCount = pageCount,
+            type = WormIndicatorType(
+                dotsGraphic = DotGraphic(
+                    dimensionResource(id = R.dimen.size_small),
+                    borderWidth = dimensionResource(id = R.dimen.border_size_small),
+                    borderColor = MaterialTheme.colorScheme.primary,
+                    color = Color.Transparent,
+                ),
+                wormDotGraphic = DotGraphic(
+                    dimensionResource(id = R.dimen.size_small),
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            ),
+            pagerState = pagerState
+        )
+
         Row(
-            modifier = modifier
+            modifier = Modifier
+                .fillMaxWidth()
                 .weight(1f)
-                .fillMaxWidth(),
+                .padding(dimensionResource(id = R.dimen.margin_16)),
             verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             DisplayControllerButton(
-                enabled = pagerState.canScrollForward,
-                {
+                Modifier, {
                     coroutineScope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage + 1)
                     }
@@ -65,8 +90,15 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, loadAffirmations: List<OnBoa
                 R.string.skip
             )
 
+            ElevatedButton(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(containerColor = ColorPurple)
+            ) {
+                Text(text = stringResource(id = R.string.get_started).uppercase())
+            }
+
             DisplayControllerButton(
-                enabled = pagerState.canScrollBackward,
+                modifier = Modifier,
                 {
                     coroutineScope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage - 1)
@@ -75,22 +107,20 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, loadAffirmations: List<OnBoa
                 R.string.next
             )
         }
+
+
     }
 }
 
-@Composable
-fun DisplayControllers() {
-    
-}
 
 @Composable
 private fun DisplayControllerButton(
-    enabled: Boolean,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
     @StringRes textTitle: Int
 ) {
-    TextButton(onClick = onClick, enabled = enabled) {
-        Text(text = stringResource(textTitle))
+    TextButton(onClick = onClick/* enabled = enabled*/) {
+        Text(text = stringResource(textTitle).uppercase())
     }
 }
 
@@ -99,7 +129,7 @@ fun PageItem(modifier: Modifier = Modifier, item: OnBoardingPage) {
     Column(
         modifier = modifier
 //            .wrapContentSize()
-            .padding(16.dp)
+            .padding(dimensionResource(id = R.dimen.margin_16))
     ) {
 
         Text(
@@ -110,7 +140,7 @@ fun PageItem(modifier: Modifier = Modifier, item: OnBoardingPage) {
             text = LocalContext.current.getString(item.subTitleResource),
             color = ColorBlueMidnight,
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.headlineMedium
+            style = MaterialTheme.typography.headlineSmall
         )
 
 
@@ -122,12 +152,16 @@ fun PageItem(modifier: Modifier = Modifier, item: OnBoardingPage) {
                 painter = painterResource(id = item.logoResource),
                 contentDescription = LocalContext.current.getString(item.descriptionResource),
                 modifier = Modifier
-                    .padding(start = 32.dp, end = 32.dp, bottom = 16.dp)
+                    .padding(
+                        start = dimensionResource(id = R.dimen.padding_32),
+                        end = dimensionResource(id = R.dimen.padding_32),
+                        bottom = dimensionResource(id = R.dimen.margin_16)
+                    )
             )
 
             Text(
                 text = LocalContext.current.getString(item.descriptionResource),
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium,
                 color = ColorBlueMidnight,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -140,11 +174,11 @@ fun PageItem(modifier: Modifier = Modifier, item: OnBoardingPage) {
 }
 
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun OnBoardingPreview() {
-    PageItem(modifier = Modifier, OnBoardingPage.values().toMutableList()[0])
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun OnBoardingPreview() {
+//    PageItem(modifier = Modifier, OnBoardingPage.values().toMutableList()[0])
+//}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
