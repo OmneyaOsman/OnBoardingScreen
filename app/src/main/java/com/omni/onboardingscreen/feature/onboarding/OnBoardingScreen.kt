@@ -135,10 +135,6 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, loadAffirmations: List<OnBoa
                 showButton = showButton,
                 onClick = {})
 
-
-
-
-
             DisplayControllerButton(
                 textTitle = R.string.next,
                 onClick = {
